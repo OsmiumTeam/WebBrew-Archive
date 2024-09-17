@@ -1,0 +1,27 @@
+<html>
+ 
+  <head>
+  <link rel="icon" href="about:blank" />
+  <meta charset="utf-8">
+  <script src="../apis/popup.js"></script>
+  </head>
+ 
+  <body>
+    <h1>dev portal</h1>
+ 
+    <script>var BOOTSCRIPT = "";</script>
+
+    <script src="payload.json.js"></script>
+    <script src="BOOT.js"></script>
+	
+	<button onclick="aboutload()">load dev build</button>
+    <script>
+        const searchParams = new URLSearchParams(`run=${encodeURIComponent(BOOTSCRIPT)}`)
+
+        function aboutload() {
+            popup.aboutFile("../wbConsole/bash.html?" + searchParams.toString(), BOOT[0], BOOT[1], BOOT[2], BOOT[3]);            
+        }
+    </script>
+  </body>
+
+</html>

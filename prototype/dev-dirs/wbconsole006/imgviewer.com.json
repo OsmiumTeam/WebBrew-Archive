@@ -1,0 +1,8 @@
+[
+    {
+        "LongName": "Image Viewer",
+        "CommandName": "imgview",
+        "Description": "view images ig",
+        "Command": "imgviewer.js"
+    }
+]

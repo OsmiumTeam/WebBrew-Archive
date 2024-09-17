@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" style="margin: 0px;padding: 0px;">
+<head>
+    <meta charset="UTF-8">
+    <title>Retroarch</title>
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="../../lib/jswindow.css">
+    <script src="../../lib/jswindow.js"></script>
+    <style>
+        #titleparent {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            grid-template-rows: 1fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
+
+        #title1 { grid-area: 1 / 1 / 2 / 2; }
+        #title2 { grid-area: 1 / 2 / 2 / 3; }
+
+        button {
+            display: block;
+            width: 100%;
+            height: 50px;
+            background-color: transparent;
+            border-style:solid;
+            color: white;
+            border-color: #51514F;
+            border-right-color: transparent;
+            border-left-color: transparent;
+            font-family: retroarch;
+            font-size: 17px;
+        }
+
+        button:hover {
+            display: block;
+            width: 100%;
+            height: 50px;
+            background-color: #212227;
+            border-style:solid;
+            color: white;
+            border-color: #2091C9;
+            font-family: retroarch;
+            font-size: 17px;
+        }
+        #canvas.texturePixelated {
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+    </style>
+</head>
+<body style="background-color: #2D2D2D;margin: 0px;padding: 0px;">
+    
+    <div id="coreselect">   
+        <div id="titleparent">
+            <div id="title1">
+                <img width="100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAACvlBMVEX////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////cK7LkAAAA6XRSTlMAAQIDBAUHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJygqKy0uMDEyMzQ1Njc4OTo7PD5AQUJDREVGR0hJSktMTU5PUFFSVFVWV1hZWltdX2BhYmRlZmdpamtsbm9wcnN0dXZ3eHl6e3x9f4CBgoOEhYaHiImKi42PkJGSk5SVlpeYmZqbnJ2foKGi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">
+            </div>
+            <div id="title2" style="align-self: center">
+                <span style="color:white;font-size: 50px;"><b>Retroarch / Cores:</b></span>
+            </div>
+            
+        </div>
+        <hr>
+        <br>
+        <div id="newcorelist">
+            <ul id="corelist">
+
+            </ul>
+        </div>
+    </div>
+    
+    <canvas id="canvas" class="texturePixelated" style="margin: 0px;display: block;"></canvas>
+
+    <script src="../../lib/filer.js"></script>
+    <script src="../../lib/brewDisk.js"></script>
+    <script src="conf.js"></script>
+    <script src="gui.js"></script>
+
+
+    <script src="webretro/base.js"></script>
+
+    <script>
+        if (queriecore !== "") {
+            startload();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+
+</head>
+<body>
+
+<desmond-player id="player"></desmond-player>
+
+<script src="filer.js"></script>
+<script src="brewDisk.js"></script>
+
+<script>
+    brewDisk.loadDisk("root")
+    brewDisk.changeDisk("root")
+    brewDisk.changeDir("desmume")
+
+    var wasmBinaryFile;
+
+    brewDisk.info.currentDisk.readFile(brewDisk.info.currentDir + "desmume.wasm", function(err, data) {
+        console.log(data);
+        wasmBinaryFile = data;
+
+        var script = document.createElement('script');
+        script.src = "desmume.js";
+        document.getElementsByTagName('head')[0].appendChild(script);
+    });
+</script>
+
+</body>
+</html>

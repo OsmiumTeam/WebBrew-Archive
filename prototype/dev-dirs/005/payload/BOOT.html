@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.html</title>
+<script src="lib/wb/lib.js"></script>
+<style>
+
+fieldset {
+    display:none;
+}
+
+.imageWtext {
+  position: relative;
+  text-align: center;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+</style>
+<link rel="stylesheet" href="lib/7.css">
+</head>
+<body  style="margin:0px">
+
+<div class="imageWtext">
+  <img src="wbbanner.jpeg" width="100%" height="200px" style="margin:none;top:0px;left:0px;right:0px">
+  <div class="bottom-left" style="color:white">WebBrew Pre-Milestone 1: 005</div>
+  <!--<div class="bottom-right"><button id="addApp" onclick="window.location.hash='add';">Add Application</button><button id="reload" onclick="reload();">Reload</button></div>-->
+</div>
+
+<div id="window">
+
+	<div class="window active is-bright" id="add" role="dialog" aria-labelledby="dialog-title">
+		<div class="title-bar">
+			<div class="title-bar-text" id="dialog-title">Add Aplication</div>
+				<div class="title-bar-controls">
+					<button aria-label="Close" onclick="window.location.hash='top';document.getElementById('addID').value = '';"></button>
+				</div>
+			</div>
+			<div class="window-body has-space">
+				<input type="text" id="addID"><label for="addID">App ID</label>
+			</div>
+			<footer style="text-align: right">
+			<button onclick="window.location.hash='top';document.getElementById('addID').value = '';">Cancel</button>
+			<button onclick="window.location.hash='top';addApp();">Cancel</button>
+			</footer>
+		</div>
+
+<div id="apps">
+
+	<fieldset id="ioGBA">
+		<legend>Iodine GBA</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="icon/gbaicon.png" width="75px"><br><button onclick="wb.popup.aboutFile('apps/ioGBA/index.html', 960, 750, 'Iodine GBA', 'icon/gbafavicon.png')">Launch</button></div>
+				<div><p>GameBoy Advance Emulator in your Browser!</p></div>
+			</div>
+	</fieldset>
+		<fieldset id="nesjs">
+		<legend>NesJS(BETA)</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="icon/nesicon.png" width="75px"><br><button onclick="wb.popup.aboutFile('apps/nesjs/reload.html', 512, 500, 'NesJS', 'icon/nesfavicon.png')">Launch</button></div>
+				<div><p>Javascript Nintendo Entretainment System(NES) Emulator</p></div>
+			</div>
+	</fieldset>
+		<fieldset id="eag1.8">
+		<legend>Eaglercraft 1.8.8</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="icon/mcicon.png" width="75px"><br><button onclick="wb.popup.aboutFile('apps/eag1.8.8/index.html', 854, 480, 'Eaglercraft 1.8.8', 'icon/mcfavicon.png')">Launch</button></div>
+				<div><p>Minecraft 1.8.8 in your Browser!</p></div>
+			</div>
+	</fieldset>
+		<fieldset id="eag1.5">
+		<legend>Eaglercraft 1.5.2</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="icon/mcicon.png" width="75px"><br><button onclick="wb.popup.aboutFile('apps/eag1.5.2/index.html', 854, 480, 'Eaglercraft 1.5.2', 'icon/mcfavicon.png')">Launch</button></div>
+				<div><p>Minecraft 1.8.8 in your Browser!</p></div>
+			</div>
+	</fieldset>
+		<fieldset id="kone">
+		<legend>Kone Client</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="icon/mcicon.png" width="75px"><br><button onclick="wb.popup.aboutFile('apps/Kone/index.html', 854, 480, 'Kone Client', 'icon/mcfavicon.png')">Launch</button></div>
+				<div><p>A 1.8 client made by konemc</p></div>
+			</div>
+	</fieldset>
+		<fieldset id="resent">
+		<legend>Resent Client</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="icon/mcicon.png" width="75px"><br><button onclick="wb.popup.aboutFile('apps/Resent/index.html', 854, 480, 'Resent Client 1.8.8', 'icon/mcfavicon.png')">Launch</button></div>
+				<div><p>The 1.8.8 version of Resent client 3.8!</p></div>
+			</div>
+	</fieldset>
+		<fieldset id="shadow">
+		<legend>Shadow Client</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="icon/mcicon.png" width="75px"><br><button onclick="wb.popup.aboutFile('apps/Shadow/index.html', 854, 480, 'Optifine 1.8.8', 'icon/mcfavicon.png')">Launch</button></div>
+				<div><p>Optifine for Eaglercraft 1.8.8!</p></div>
+			</div>
+	</fieldset>
+		<fieldset id="uclient">
+		<legend>uClient</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="icon/mcicon.png" width="75px"><br><button onclick="wb.popup.aboutFile('apps/uClient/index.html', 854, 480, 'uClient 1.8', 'icon/mcfavicon.png')">Launch</button></div>
+				<div><p>Alternative to Resent client</p></div>
+			</div>
+	</fieldset>
+		<fieldset id="eagreborn">
+		<legend>Eaglercraft Reborn</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="icon/mcicon.png" width="75px"><br><button onclick="wb.popup.aboutFile('apps/eagReborn/index.html', 854, 480, 'Eaglercraft Reborn 1.8.8', 'icon/mcfavicon.png')">Launch</button></div>
+				<div><p>An attempt to revive EaglercraftX!</p></div>
+			</div>
+	</fieldset>
+		<fieldset id="eagbeta">
+		<legend>Eaglercraft Beta 1.3</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="icon/mcicon.png" width="75px"><br><button onclick="wb.popup.aboutFile('apps/eag1.3/index.html', 854, 480, 'Eaglercraft Beta 1.3', 'icon/mcfavicon.png')">Launch</button></div>
+				<div><p>A classic version of minecraft in your Browser!</p></div>
+			</div>
+	</fieldset>
+
+</div>
+
+		<div class="window active is-bright" id="reloader" role="dialog" aria-labelledby="dialog-title">
+			<div class="title-bar">
+				<div class="title-bar-text" id="dialog-title">Refresh?</div>
+					<div class="title-bar-controls">
+						<button aria-label="Close" onclick="window.location.hash='top';"></button>
+					</div>
+				</div>
+				<div class="window-body has-space">
+					<button onclick="reload2();window.location.hash='top';">Refresh Apps</button>
+				</div>
+			</div>
+
+</div>
+
+<script src="apps/ioGBA/wb.js"></script>
+<script src="apps/eag1.3/wb.js"></script>
+<script src="apps/Kone/wb.js"></script>
+<script src="apps/Resent/wb.js"></script>
+<script src="apps/Shadow/wb.js"></script>
+<script src="apps/uClient/wb.js"></script>
+<script src="apps/eagReborn/wb.js"></script>
+<script src="apps/nesjs/wb.js"></script>
+<script src="apps/eag1.8.8/wb.js"></script>
+<script src="apps/eag1.5.2/wb.js"></script>
+
+</body>
+</html>

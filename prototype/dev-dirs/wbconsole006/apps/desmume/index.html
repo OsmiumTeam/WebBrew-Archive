@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #top {
+            bottom: 0px;
+        }
+        #bottom {
+            bottom: 0px;top: 0px;
+        }
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+        #player_parent {
+            margin: 0;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <script src="../../lib/filer.js"></script>
+    <script src="../../lib/brewDisk.js"></script>
+    <script src="wbfilehack.js"></script>
+    <input type="file" id="romin"></input>
+    <desmond-player id="player_parent"></desmond-player>
+    <div id="reqs"></div>
+    <script src="post-init.js"></script>
+
+</body>
+</html>

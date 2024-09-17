@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>index.html</title>
+
+		<style>
+		li.hide {
+		    display: none !important;
+		}
+
+		#main {
+			position:absolute;
+			top: 26px;
+			left: 0px;
+			right: 0px;
+			bottom: 19px;
+			align-items: center;
+		}
+		</style>
+
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=160">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <!--Required Scripts-->
+        <script src="IodineGBA/includes/TypedArrayShim.js"></script>
+        <script src="IodineGBA/core/Cartridge.js"></script>
+        <script src="IodineGBA/core/DMA.js"></script>
+        <script src="IodineGBA/core/Emulator.js"></script>
+        <script src="IodineGBA/core/Graphics.js"></script>
+        <script src="IodineGBA/core/RunLoop.js"></script>
+        <script src="IodineGBA/core/Memory.js"></script>
+        <script src="IodineGBA/core/IRQ.js"></script>
+        <script src="IodineGBA/core/JoyPad.js"></script>
+        <script src="IodineGBA/core/Serial.js"></script>
+        <script src="IodineGBA/core/Sound.js"></script>
+        <script src="IodineGBA/core/Timer.js"></script>
+        <script src="IodineGBA/core/Wait.js"></script>
+        <script src="IodineGBA/core/CPU.js"></script>
+        <script src="IodineGBA/core/Saves.js"></script>
+        <script src="IodineGBA/core/sound/FIFO.js"></script>
+        <script src="IodineGBA/core/sound/Channel1.js"></script>
+        <script src="IodineGBA/core/sound/Channel2.js"></script>
+        <script src="IodineGBA/core/sound/Channel3.js"></script>
+        <script src="IodineGBA/core/sound/Channel4.js"></script>
+        <script src="IodineGBA/core/CPU/ARM.js"></script>
+        <script src="IodineGBA/core/CPU/THUMB.js"></script>
+        <script src="IodineGBA/core/CPU/CPSR.js"></script>
+        <script src="IodineGBA/core/graphics/Renderer.js"></script>
+        <script src="IodineGBA/core/graphics/RendererShim.js"></script>
+        <script src="IodineGBA/core/graphics/RendererProxy.js"></script>
+        <script src="IodineGBA/core/graphics/BGTEXT.js"></script>
+        <script src="IodineGBA/core/graphics/BG2FrameBuffer.js"></script>
+        <script src="IodineGBA/core/graphics/BGMatrix.js"></script>
+        <script src="IodineGBA/core/graphics/AffineBG.js"></script>
+        <script src="IodineGBA/core/graphics/ColorEffects.js"></script>
+        <script src="IodineGBA/core/graphics/Mosaic.js"></script>
+        <script src="IodineGBA/core/graphics/OBJ.js"></script>
+        <script src="IodineGBA/core/graphics/OBJWindow.js"></script>
+        <script src="IodineGBA/core/graphics/Window.js"></script>
+        <script src="IodineGBA/core/graphics/Compositor.js"></script>
+        <script src="IodineGBA/core/memory/DMA0.js"></script>
+        <script src="IodineGBA/core/memory/DMA1.js"></script>
+        <script src="IodineGBA/core/memory/DMA2.js"></script>
+        <script src="IodineGBA/core/memory/DMA3.js"></script>
+        <script src="IodineGBA/core/cartridge/SaveDeterminer.js"></script>
+        <script src="IodineGBA/core/cartridge/SRAM.js"></script>
+        <script src="IodineGBA/core/cartridge/FLASH.js"></script>
+        <script src="IodineGBA/core/cartridge/EEPROM.js"></script>
+        <script src="IodineGBA/core/cartridge/GPIO.js"></script>
+        <!--Add your webpage scripts below-->
+        <script src="user_scripts/AudioGlueCode.js"></script>
+        <script src="user_scripts/base64.js"></script>
+        <script src="user_scripts/CoreGlueCode.js"></script>
+        <script src="user_scripts/GfxGlueCode.js"></script>
+        <script src="user_scripts/GUIGlueCode.js"></script>
+        <script src="user_scripts/JoyPadGlueCode.js"></script>
+        <script src="user_scripts/ROMLoadGlueCode.js"></script>
+        <script src="user_scripts/SavesGlueCode.js"></script>
+        <script src="user_scripts/WorkerGfxGlueCode.js"></script>
+        <script src="user_scripts/WorkerGlueCode.js"></script>
+        <script src="user_scripts/XAudioJS/swfobject.js"></script>
+        <script src="user_scripts/XAudioJS/resampler.js"></script>
+        <script src="user_scripts/XAudioJS/XAudioServer.js"></script>
+        <link rel="stylesheet" href="../../lib/7.css">
+    </head>
+    <body id="top" style="background-color:black;margin: 0;overflow:hidden;">
+<input type="file" id="bios_load" class="files" style="display:none;">
+<input type="file" id="rom_load" class="files" style="display:none;">
+	<div style="margin-left:0px;margin-right:0px;margin-top:0px;top:0px;right:0px;left:0px">	
+	<ul role="menubar" class="can-hover">
+  		<li role="menuitem" tabindex="0">
+		File
+		<ul role="menu" style="width: 200px">
+			<li role="menuitem"><img src="icons8/gba.png" width="17px"><button onclick="document.getElementById('bios_load').click()">Load Bios</button></li>
+			<li role="menuitem"><img src="icons8/cart.png" width="17px"><button onclick="document.getElementById('rom_load').click()">Load Rom</button></li>
+		</ul></li>
+
+ 		<li role="menuitem" tabindex="0">
+		Emulator
+		<ul role="menu" style="width: 200px">
+			<li role="menuitem" id="play" class="show"><img src="icons8/play.png" width="17px"><a>Play</a></li>
+			<li role="menuitem" id="pause" class="hide"><img src="icons8/pause.png" width="17px"><a>Pause</a></li>
+			<li role="menuitem" id="restart"><img src="icons8/reset.png" width="17px"><a>Reset</a></li>
+			<li role="menuitem" id="fullscreen"><img src="icons8/fullscreen.png" width="17px"><a>Fullscreen</a></li>
+			<li role="menuitem"><img src="icons8/save.png" width="17px"><a href="#saves" id="saves_menu">Saves</a></li>
+		</ul></li>
+
+  		<li role="menuitem" tabindex="0">
+		Settings
+		<ul role="menu" style="width: 200px">
+			<li role="menuitem"><input type="checkbox" id="skip_boot"> <label for="skip_boot">Skip Bios Intro</label></li>
+			<li role="menuitem"><input type="checkbox" id="toggleSmoothScaling"> <label for="toggleSmoothScaling">Smooth Scaling</label></li>
+			<li role="menuitem"><input type="checkbox" id="toggleDynamicSpeed"> <label for="toggleDynamicSpeed">Dynamic Speed</label></li>
+			<li role="menuitem"><input type="checkbox" id="offthread-cpu" checked> <label for="offthread-cpu">CPU off-thread</label></li>
+			<li role="menuitem"><input type="checkbox" id="offthread-gpu" checked> <label for="offthread-gpu">GPU off-thread</label></li>
+			<li role="menuitem"><input type="checkbox" id="sound" checked> <label for="sound">Sound</label></li>
+			<li role="menuitem"><img src="icons8/keyboard.png" width="17px"><a href="#keybinds">Keybinds</a></li>
+			<li role="menuitem"><img src="icons8/volume.png" width="17px"><a href="#vol-speed">Volume and Speed</a></li>
+		</ul></li>
+
+  		<li role="menuitem" tabindex="0">
+		Help
+		<ul role="menu" style="width: 200px">
+			<li role="menuitem"><img src="icons8/about.png" width="17px"><a>About</a></li>
+			<li role="menuitem"><a>Credits</a></li>
+		</ul></li>
+	</ul>
+	</div>
+
+
+	<div id="windows">
+
+	
+		<div class="window active is-bright" id="keybinds" role="dialog" aria-labelledby="dialog-title">
+			<div class="title-bar">
+				<div class="title-bar-text" id="dialog-title">Keybinds</div>
+					<div class="title-bar-controls">
+						<button aria-label="Close" onclick="window.location.hash='top';"></button>
+					</div>
+				</div>
+				<div class="window-body has-space">
+					<section class="tabs">
+						<menu role="tablist" aria-label="Window with Tabs">
+							<button role="tab" aria-controls="controls" aria-selected="true">Controls</button>
+							<button role="tab" aria-controls="hotkeys">Hotkeys</button>
+						</menu>
+						<article role="tabpanel" id="controls">
+
+							<fieldset>
+								<legend>Controls</legend>
+							  		<div class="field-row">
+										<button id="key_a">A</button>
+										<button id="key_b">B</button>
+							  		</div>
+							  		<div class="field-row">
+										<button id="key_l">L</button>
+										<button id="key_r">R</button>
+							  		</div>
+							  		<div class="field-row">
+										<button id="key_start">Start</button>
+										<button id="key_select">Select</button>
+							  		</div>
+							  		<div class="field-row">
+										<button id="key_up">Up</button>
+										<button id="key_down">Down</button>
+							  		</div>
+							  		<div class="field-row">
+										<button id="key_left">Left</button>
+										<button id="key_right">Right</button>
+							  		</div>
+
+							</fieldset>
+
+						</article>
+						<article role="tabpanel" id="hotkeys" hidden>
+
+							<fieldset>
+								<legend>Hotkeys</legend>
+							  		<div class="field-row">
+										<button id="key_volumeup">Volume Up</button>
+										<button id="key_volumedown">Volume Down</button>
+							  		</div>
+							  		<div class="field-row">
+										<button id="key_speedup">Speed Up</button>
+										<button id="key_slowdown">Speed Down</button>
+							  		</div>
+							  		<div class="field-row">
+										<button id="key_speedreset">Speed Reset</button>
+										<button id="key_fullscreen">Fullscreen</button>
+							  		</div>
+							  		<div class="field-row">
+										<button id="key_playpause">Play/Pause</button>
+										<button id="key_restart">Reset</button>
+							  		</div>
+
+							</fieldset>
+
+						</article>
+					</section>
+				</div>
+				<footer style="text-align: right">
+				<button onclick="window.location.hash='top';">Cancel</button>
+				</footer>
+			</div>
+		</div>
+
+		<div class="window glass active" id="vol-speed" role="dialog" aria-labelledby="dialog-title">
+			<div class="title-bar">
+				<div class="title-bar-text" id="dialog-title">Volume and Speed</div>
+					<div class="title-bar-controls">
+						<button aria-label="Close" onclick="window.location.hash='top';"></button>
+					</div>
+				</div>
+				<div class="window-body has-space">
+                	<input type="range" id="volume">
+					<label for="volume">Volume</label>
+                	<input type="range" id="speedset">
+					<label for="speedset">Speed</label>
+				</div>
+				<footer style="text-align: right">
+				<button onclick="window.location.hash='top';">Close</button>
+				</footer>
+			</div>
+		</div>
+
+		<div class="window active is-bright" id="saves" role="dialog" aria-labelledby="dialog-title">
+			<div class="title-bar">
+				<div class="title-bar-text" id="dialog-title">Save Management</div>
+					<div class="title-bar-controls">
+						<button aria-label="Close" onclick="window.location.hash='top';"></button>
+					</div>
+				</div>
+				<div class="window-body has-space">
+					<input type="file" id="import" class="files" style="display:none">
+					<button onclick="document.getElementById('import').click()">Import Saves</button>
+					<a href="./" id="export" target="_new" style="display:none">you should not see this</a>
+					<button onclick="document.getElementById('export').click()">Export All Saves</button>
+					<fieldset>
+						<legend>Saves List</legend>
+					  		<div class="field-row">
+								<ul id="existing_saves_list">
+
+                                </ul>
+					  		</div>
+					</fieldset>
+				</div>
+				<footer style="text-align: right">
+				<button onclick="window.location.hash='top';">Cancel</button>
+				</footer>
+			</div>
+		</div>
+
+		<div class="window active is-bright" id="id" role="dialog" aria-labelledby="dialog-title">
+			<div class="title-bar">
+				<div class="title-bar-text" id="dialog-title">title</div>
+					<div class="title-bar-controls">
+						<button aria-label="Close" onclick="window.location.hash='top';"></button>
+					</div>
+				</div>
+				<div class="window-body has-space">
+					
+				</div>
+				<footer style="text-align: right">
+				<button onclick="window.location.hash='top';">Cancel</button>
+				</footer>
+			</div>
+		</div>
+
+	</div>
+	
+		<div id="main">
+                <canvas class="canvas" id="emulator_target" width="240" height="160" style="display: block;margin-left: auto;margin-right: auto;"></canvas>
+        </div>
+		<script>
+
+		const tabButtons = document.querySelectorAll("[role=tab]");
+		tabButtons.forEach((tabButton) => {
+		  tabButton.addEventListener("click", (e) => {
+			e.preventDefault();
+			const tabContainer = e.target.parentElement.parentElement;
+			const targetId = e.target.getAttribute("aria-controls");
+			tabButtons.forEach((_tabButton) =>
+			  _tabButton.setAttribute("aria-selected", false)
+			);
+			tabButton.setAttribute("aria-selected", true);
+			tabContainer
+			  .querySelectorAll("[role=tabpanel]")
+			  .forEach((tabPanel) => tabPanel.setAttribute("hidden", true));
+			tabContainer
+			  .querySelector(`[role=tabpanel]#${targetId}`)
+			  .removeAttribute("hidden");
+		  });
+		});
+
+		</script>
+	            <div class="touch-controls" style="display:none">
+                <div class="touch-dpad">
+                    <button id="touch-up">↑</button><br>
+                    <button id="touch-left">←</button>
+                    <button id="touch-right">→</button><br>
+                    <button id="touch-down">↓</button>
+                </div>
+                <div class="touch-buttons">
+                    <button id="touch-select">SELECT</button> 
+                    <button id="touch-start">START</button>
+                </div>
+                <div class="touch-buttons">
+                    <button id="touch-a">A</button>
+                    <button id="touch-b">B</button><br>
+                    <button id="touch-l">L</button>
+                    <button id="touch-r">R</button>
+                </div>
+            </div>
+
+			<div role="tooltip" class="is-top is-left" style="bottom:26px;right:0px;position:absolute;display:none;" id="tempMessageHolder"><span id="tempMessage">text</span></div>
+
+			<div class="status-bar" style="bottom:0px;right:0px;left:0px;position:absolute;margin-left:0px;margin-right:0px;margin-bottom:0px">
+				<p class="status-bar-field" id="romp">No Rom Loaded</p>
+				<p class="status-bar-field" id="biosp">No Bios Loaded</p>
+				<p class="status-bar-field" id="speedView">Speed: Not Running</p>
+			</div>
+
+	</body>
+</html>

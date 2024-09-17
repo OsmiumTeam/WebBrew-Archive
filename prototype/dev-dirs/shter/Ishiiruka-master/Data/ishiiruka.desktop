@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Icon=ishiiruka
+Exec=ishiiruka
+Terminal=false
+Type=Application
+Categories=Game;Emulator;
+Name=Ishiiruka
+GenericName=Wii/GameCube Emulator
+Comment=A Wii/GameCube Emulator

@@ -1,0 +1,146 @@
+{
+	"ver": {
+		"title": "VER - Version",
+		"category": "MISC",
+		"command": "ver",
+		"body": "Simple command that prints WebBrew version."
+	},
+	"cat": {
+		"title": "CAT - Print File",
+		"category": "FILE MANAGEMENT",
+		"command": "cat <FILENAME>",
+		"body": "Prints out the contents of <filename>."
+	},
+	"cd": {
+		"title": "CD - Change Directory",
+		"category": "FILE MANAGEMENT",
+		"command": "cd <DIRECTORY>",
+		"body": "Changes your current working directory to <DIRECTORY>. \n\n To go one directory up, do \"cd ..\"\n To go to the root directory, do \"cd /\"\n CD supports both relative (dir/) and absolute (/tmp/dir/) paths."
+	},
+	"change": {
+		"title": "CHANGE - Change Disk",
+		"category": "DISK MANAGEMENT",
+		"command": "change <DISK>",
+		"body": "Changes your current disk to <DISK>."
+	},
+	"clear": {
+		"title": "CLEAR",
+		"category": "MISC",
+		"command": "clear",
+		"body": "Clears terminal screen."
+	},
+	"debug_wbsh": {
+		"title": "debug_wbsh - Debug Commands",
+		"category": "BETA DEBUG",
+		"command": "debug_wbsh <COMMAND>",
+		"body": "NOTE TO DEVS: REMOVE THIS BEFORE PUBLIC RELEASE (NOT BETA RELEASE)\n\n Runs <COMMAND> from the list of debug commands.\n\n DEBUG COMMANDS: \n shout: prints SH_Output variable"
+	},
+	"disks": {
+		"title": "DISKS - List Disks",
+		"category": "DISK MANAGEMENT",
+		"command": "disks",
+		"body": "Shows all currently mounted disks.\n Use change <DISK> to open a disk."
+	},
+	"format": {
+		"title": "FORMAT - Format Disk",
+		"category": "DISK MANAGEMENT",
+		"command": "format <DISK>",
+		"body": "&c 255,0,0 c&*WARNING* DESTRUCTIVE OPERATION! USE AT YOUR OWN RISK!&c 255,255,255 c&\n Formats (clears) a disk.\n This will remove all files and folders from a disk.\n Make sure you're deleting the correct disk to prevent data loss."
+	},
+	"get": {
+		"title": "GET - Download File",
+		"category": "FILE MANAGEMENT",
+		"command": "get <FILENAME>",
+		"body": "Downloads <FILENAME> from your WebBrew disk to your hard drive."
+	},
+	"loadcom": {
+		"title": "LOADCOM - Load Command",
+		"category": "MISC",
+		"command": "loadcom <FILENAME>",
+		"body": "Loads commands from <FILENAME>."
+	},
+	"ls": {
+		"title": "LS - List Directory",
+		"category": "FILE MANAGEMENT",
+		"command": "ls",
+		"body": "Shows all files and directories in the current working directory."
+	},
+	"man": {
+		"title": "MAN - Command Manual",
+		"category": "MISC",
+		"command": "man <COMMAND>",
+		"body": "The WebBrew Command Manual provides manual pages for every loaded command.\n These pages provide helpful information on how to use a command and its syntax\n\n Running \"man <COMMAND>\" will show <COMMAND>'s manual page.\n Running \"man\" by itself will give you a directory of categories."
+	},
+	"mkdir": {
+		"title": "MKDIR - Make Directory",
+		"category": "FILE MANAGEMENT",
+		"command": "mkdir <NAME>",
+		"body": "Makes a directory (folder) called <NAME> in the current working directory"
+	},
+	"mount": {
+		"title": "MOUNT - Mount Disk",
+		"category": "DISK MANAGEMENT",
+		"command": "mount <DISK>",
+		"body": "Mounts the provided disk.\n If the disk does not exist, it will create it.\n To change into a mounted disk, use \"change <DISK>\"."
+	},
+	"mv": {
+		"title": "MV - Move File",
+		"category": "FILE MANAGEMENT",
+		"command": "mv <FILE1> <FILE2>",
+		"body": "Moves <FILE1> to the new location of <FILE2>."
+	},
+	"post": {
+		"title": "POST - Upload File",
+		"category": "FILE MANAGEMENT",
+		"command": "post",
+		"body": "Upload a file from your hard drive to the current working directory."
+	},
+	"pwd": {
+		"title": "PWD - Print Working Directory",
+		"category": "MISC",
+		"command": "pwd",
+		"body": "Prints your current working directory (current directory your terminal is on)."
+	},
+	"rjs": {
+		"title": "RJS - Execute JS File",
+		"category": "BINARIES",
+		"command": "rjs <JS-FILE>",
+		"body": "Runs <JS-FILE>"
+	},
+	"rm": {
+		"title": "RM - Remove File/Directory",
+		"category": "FILE MANAGEMENT",
+		"command": "rm <PATH>",
+		"body": "Removes the file or directory <PATH>.\n If directory provided has files or directories inside, you wont be able to remove it.\n \"rmdir <PATH>\" does'nt have this restriction."
+	},
+	"rmdir": {
+		"title": "RMDIR - Remove Recursive Directory",
+		"category": "FILE MANAGEMENT",
+		"command": "rmdir <PATH>",
+		"body": "Removes the directory <PATH>.\n Can remove directories with files or directories inside."
+	},
+	"touch": {
+		"title": "TOUCH - Create Empty File",
+		"category": "FILE MANAGEMENT",
+		"command": "touch <FILE>",
+		"body": "Creates an empty file at <FILE>"
+	},
+	"unmount": {
+		"title": "UNMOUNT - Unmount Disk",
+		"category": "DISK MANAGEMENT",
+		"command": "unmount <DISK>",
+		"body": "Unmounts <ejects/closes> the provided disk. Remount it with \"mount <DISK>\""
+	},
+	"wget": {
+		"title": "WGET - Upload File From URL",
+		"category": "FILE MANAGEMENT",
+		"command": "wget <URL>",
+		"body": "Uploads a file from provided url to the current working directory."
+	},
+	"reboot": {
+		"title": "REBOOT - Reload Terminal",
+		"category": "MISC",
+		"command": "reboot",
+		"body": "Reloads and reboots the terminal (sends you back to your bootloader)."
+	}
+}

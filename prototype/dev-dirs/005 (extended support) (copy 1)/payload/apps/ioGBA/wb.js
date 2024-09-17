@@ -1,0 +1,1 @@
+document.getElementById("ioGBA").style.display = "block";

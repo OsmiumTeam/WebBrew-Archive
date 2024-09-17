@@ -1,0 +1,1 @@
+document.getElementById("koneold").style.display = "block";

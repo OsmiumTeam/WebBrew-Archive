@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" style="left:0px;right:0px;position:absolute;margin: 0px;padding: 0px;top: 0px;bottom: 0px;overflow:hidden">
+<head>
+    <meta charset="UTF-8">
+    <title>index.html</title>
+    <link rel="stylesheet" href="payload/98.css">
+    <script src="payload/popup.js"></script>
+    <style>
+        .tool-button {
+            width: calc(100% - 4px);
+            height: 42px;
+            text-align: left;
+        }
+        .win9x {
+            border-width: 2px;
+            background-color: #c0c0c0;
+            font-family: "Pixelated MS Sans Serif", Monospace, Sans-Serif;
+        }
+        .inset {border-style: inset;}
+        .outset {border-style: outset;}
+        .press {
+            box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey
+        }
+    </style>
+</head>
+<body style="left:0px;right:0px;position:absolute;user-select: none;margin: 0px;padding: 0px;top: 0px;bottom: 0px;background-image: url('payload/wbpl_extra/bg.png');background-size: cover;">
+    <span id="xcheck"></span>
+    <div class="win9x outset" style="position: absolute; left: 0px;right: 0px;top: 0px;height: 28px;">
+        <div class="win9x inset" style="margin:auto;position: absolute;top: 2px;left: 2px;bottom: 2px;"><span>WebBrew Payload Loader</span></div>
+        <button style="position: absolute;top: 2px;right: 2px;" id="tools-button">Tools</button>
+    </div>
+    <div id="tools-menu" class="win9x outset" style="display: none;position:absolute;top: 28px;right: 0px;left: 85%; min-height: 150px;">
+        <div style="padding-left: 4px;padding-top: 4px;padding-bottom: 4px;">
+            
+        </div>
+    </div>
+    <script>
+        let tool_list = []
+
+        const windows = {
+            titles:[],
+            maximized:[],
+            minimized:[],
+            ontop:0,
+            topindex:1000
+        }
+        //popup.open("payload/BOOT.html", 480, 600, "The WebBrew Launcher", "payload/icon/wblicon.png")
+
+        function sleep(ms = 0) {
+			return new Promise(resolve => setTimeout(resolve, ms));
+		}
+
+        addEventListener("message", function(e){
+            if (e.data[0] === "openWindow") {
+                popup.open("payload/" + e.data[1], e.data[2], e.data[3], e.data[4], e.data[5])
+            }
+        })
+
+        //tools menu
+        let tools_menu_show = false
+        document.getElementById("tools-button").addEventListener("click", function() {
+            tools_menu_show = !tools_menu_show
+
+            if (tools_menu_show) {
+                document.getElementById("tools-menu").style.display = "block"
+                document.getElementById("tools-button").setAttribute("class", "press")
+            } else {
+                document.getElementById("tools-menu").style.display = "none"
+                document.getElementById("tools-button").setAttribute("class", "")
+            }
+        })
+    
+        function addTool(_title) {
+            let div = document.createElement("div")
+            let button = document.createElement("button")
+
+            div.setAttribute("style", "padding-left: 4px;padding-top: 4px;padding-bottom: 4px;")
+            button.setAttribute("class", "tool-button")
+            button.innerText = _title
+
+            div.appendChild(button)
+            document.getElementById("tools-menu").appendChild(div)
+
+            return button
+        }
+
+        let tool_list_file = document.createElement("script")
+        tool_list_file.setAttribute("src", "payload/wbpl_extra/tool/tool-list.json.js")
+        document.body.appendChild(tool_list_file)
+    </script>
+    
+</body>
+</html>

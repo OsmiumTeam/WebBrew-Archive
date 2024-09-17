@@ -1,0 +1,1 @@
+document.getElementById("resent").style.display = "block";

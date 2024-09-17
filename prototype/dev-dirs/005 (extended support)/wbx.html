@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" style="left:0px;right:0px;position:absolute;margin: 0px;padding: 0px;top: 0px;bottom: 0px;overflow:hidden">
+<head>
+    <meta charset="UTF-8">
+    <title>WBX</title>
+    <link rel="stylesheet" href="https://unpkg.com/xp.css">
+    <script src="popup.js"></script>
+</head>
+<body style="left:0px;right:0px;position:absolute;user-select: none;margin: 0px;padding: 0px;top: 0px;bottom: 0px;background-image: url('file:///home/Block_2222/Downloads/Clouds.bmp');background-size: cover;">
+    <span id="xcheck"></span>
+    <script>
+        const windows = {
+            titles:[],
+            maximized:[],
+            minimized:[],
+            ontop:0,
+            topindex:1000
+        }
+        popup.open("payload/BOOT.html", 480, 800, "The WebBrew Launcher", "payload/icon/wblicon.png")
+
+
+        addEventListener("message", function(e){
+            if (e.data[0] === "openWindow") {
+                popup.open("payload/" + e.data[1], e.data[2], e.data[3], e.data[4], e.data[5])
+            }
+        })
+    </script>
+</body>
+</html>

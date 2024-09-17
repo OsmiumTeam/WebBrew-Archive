@@ -1,0 +1,8 @@
+[
+    {
+        "LongName": "IodineGBA-CLI",
+        "CommandName": "iogba",
+        "Description": "The command line interface for IodineGBA, a JS Gameboy Advance emulator",
+        "Command": "iogba-cli.js"
+    }
+]

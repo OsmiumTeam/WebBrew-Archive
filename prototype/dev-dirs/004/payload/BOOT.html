@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.html</title>
+<script>window.rela = [];</script
+<script src="wbl.js"></script>
+<style>
+
+.imageWtext {
+  position: relative;
+  text-align: center;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+</style>
+<link rel="stylesheet" href="lib/7.css">
+</head>
+<body  style="margin:0px">
+
+<div class="imageWtext">
+  <img src="wbbanner.jpeg" width="100%" height="200px" style="margin:none;top:0px;left:0px;right:0px">
+  <div class="bottom-left" style="color:white">WebBrew Milestone 1: 005</div>
+  <div class="bottom-right"><button id="addApp" onclick="window.location.hash='add';">Add Application</button><button id="reload" onclick="reload();">Reload</button></div>
+</div>
+
+<div id="window">
+
+	<div class="window active is-bright" id="add" role="dialog" aria-labelledby="dialog-title">
+		<div class="title-bar">
+			<div class="title-bar-text" id="dialog-title">Add Aplication</div>
+				<div class="title-bar-controls">
+					<button aria-label="Close" onclick="window.location.hash='top';document.getElementById('addID').value = '';"></button>
+				</div>
+			</div>
+			<div class="window-body has-space">
+				<input type="text" id="addID"><label for="addID">App ID</label>
+			</div>
+			<footer style="text-align: right">
+			<button onclick="window.location.hash='top';document.getElementById('addID').value = '';">Cancel</button>
+			<button onclick="window.location.hash='top';addApp();">Cancel</button>
+			</footer>
+		</div>
+	</div>
+
+</div>
+
+<div id="apps">
+
+	<fieldset>
+		<legend>AppName</legend>
+			<div class="field-row">
+				<div style="width:80px;float:left"><img src="apps/ioGBA/icon.png" width="75px"><br><button>delete</button></div>
+				<div><p>desc:</p></div>
+			</div>
+	</fieldset>
+
+</div>
+
+</body>
+</html>

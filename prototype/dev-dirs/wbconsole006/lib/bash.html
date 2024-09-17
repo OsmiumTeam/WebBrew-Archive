@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" style="margin: 0px;padding: 0px;top: 0px;bottom: 0px;" id="html">
+<head>
+    <title>WTerm</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="defaultFont.css">
+</head>
+<body style="margin: 0px;padding: 0px;background-color: black;top: 0px;bottom: 0px;" >
+    <p style="font-family: defaultConsole;position: absolute;top: -100px;">dummy text for font load</p>
+    
+    <pre id="output" style="color: white;margin: 0px;padding: 0px;top: 0px;bottom: 0px;font-family: defaultConsole;font-size: 16px;"></pre>
+    <p id="bottom"></p>
+
+    <!--<canvas id="display" style="display: block;"></canvas>-->
+
+    <div id="extra" style="display:none">
+        <input type="text" id="paster">
+        <button id="pasteclick" onclick="loadPaste()"></button>
+        <button id="inputEnter"></button>
+    </div>
+    <script src="mime.json.js"></script>
+    <script src="base64ArrayBuffer.js"></script>
+    <script src="saveas.js"></script>
+    <script src="filer.js"></script>
+    <script src="brewDisk.js"></script>
+    <script src="newdisplay.js"></script>
+    <script src="input.js"></script>
+    <script src="defaultCommands.js"></script>
+    <script>bash();</script>
+</body>
+</html>
