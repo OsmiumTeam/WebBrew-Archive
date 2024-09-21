@@ -3,9 +3,9 @@ WEBBREW 005 EXTENDED SUPPORT 2 INSTALL INSTRUCTIONS:
 ----------------------------------------------------
 
  1. extract this zip
- 2. open the "payload/wb_apps/" folder (double-click)
- 3. copy/extract contents of appdist.zip into the wb_apps folder (you dont have to extract everything, only the apps that you want to use)
- 4. go back 2 folders
+ 2. open the "payload/webbrew/apps/" folder (double-click)
+ 3. copy/extract contents of appdist.zip into the apps folder (you dont have to extract everything, only the apps that you want to use)
+ 4. go back 3 folders
  5. open index.html (double-click) and bookmark it (star)
  6. all done! Below are the instructions on how to use WebBrew.
 
@@ -13,7 +13,7 @@ WEBBREW 005 EXTENDED SUPPORT 2 INSTALL INSTRUCTIONS:
 GENERAL USAGE INSTRUCTIONS:
 ---------------------------
 
-You can launch WebBrew 005 from the "Tools" menu. You can use the launcher to open the apps that you saved in the wb_apps folder.
+You can launch WebBrew 005 by pressing the Launch WebBrew button. You can use the launcher to open the apps that you saved in the apps folder.
 
 -----------------------------
 WEBBREW SHELL (COMMAND LINE):
@@ -43,5 +43,4 @@ Dont know all the commands yet? Dont worry! WebBrew SHell has a manual! You can 
 -----------------------
 WBPL Change Background:
 -----------------------
-
 Its simple! just copy a PNG background to "payload/wbpl_extra/bg.png"!

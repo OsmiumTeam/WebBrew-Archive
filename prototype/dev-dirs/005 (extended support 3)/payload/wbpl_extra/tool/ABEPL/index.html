@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="icon" href="about:blank" />
     <script src="../../../webbrew/lib/wb/lib.js"></script>
     <link rel="stylesheet" href="../../../98.css">
 </head>
+
 <body>
     <h2>ABE Payload Loader</h2>
 
     <script src="../../../webbrew/payload.json.js"></script>
 
-    <button onclick="wb.popup.aboutFile('../../../webbrew/popup.html', BOOT[0], BOOT[1], BOOT[2], BOOT[3]);">LOAD PAYLOAD</button>
-    <button onclick="wb.popup.file('../../../webbrew/popup.html', BOOT[0], BOOT[1])">LOAD PAYLOAD (as file://)</button>
+    <button onclick="loadWB()">LOAD WEBBREW</button>
+    <script>
+        function loadWB() {
+            if (localStorage.getItem("WBp005ESP3_notagain") === "ye") { 
+                if (localStorage.getItem("WBp005ESP3_mode") === "classic") { 
+                    wb.popup.aboutFile("../../../webbrew/BOOT.classic.html", null, null, "The WebBrew Launcher", "../../../webbrew/icon/wbicon.png") 
+                } else { 
+                    localStorage.setItem("WBp005ESP3_mode", "normal") 
+                    wb.popup.aboutFile("../../../webbrew/BOOT.html", 480, 800, "The WebBrew Launcher", "../../../webbrew/icon/wbicon.png") 
+                } 
+            } else { 
+                wb.popup.aboutFile('../../../webbrew/popup.html', BOOT[0], BOOT[1], BOOT[2], BOOT[3])
+            }
+        }
+    </script>
 </body>
+
 </html>

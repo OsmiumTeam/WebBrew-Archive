@@ -1,0 +1,1 @@
+document.getElementById("shadow").style.display = "block";
